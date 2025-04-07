@@ -1,0 +1,23 @@
+using System;
+
+public class Solution
+{
+    public static string KthLargestInteger(string[] nums, int k) 
+    {
+        var maxHeap = new PriorityQueue<int,int>();
+        
+        foreach(string num in nums)
+        {
+            maxHeap.Enqueue(int.Parse(num), int.Parse(num)*-1);
+        }
+        
+        int max = 0;
+        while(k >0)
+        {
+            max = maxHeap.Dequeue();
+            k--;
+        }
+        
+        return max.ToString();
+    }
+}
